@@ -11,6 +11,7 @@ const theme = extendTheme({
     colors: {
         red: '#EC1D23',
         bgColor: "DEDEDE",
+        click: "#a60202",
     },
 })
 
