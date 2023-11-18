@@ -7,24 +7,23 @@ const VotingOption = ({ label, onCheckBoxChange }) => {
     <Box>
       <Flex
         p={4}
-        borderWidth="1px"
         borderRadius="20px"
         alignItems="center"
-        width="250px"
+        width="300px"
         mb={4}
         gap="30px"
         color="white"
         variant="solid"
         bgColor="#d9d9d9"
         boxShadow="6px 6px 6px rgba(0, 0, 0, 0.2)"
-        height="100px"
+        height="150px"
         justifyContent="space-between"
       >
         <Box>
-          <Heading as="h3" size="lg" mb={2} color="black"> 
+          <Heading as="h3" fontSize="30px" mb={2} color="black"> 
             {label}
           </Heading>
-          <Text color="red" fontSize="sm">Saber mais</Text>
+          <Text color="red" fontSize="md">Saber mais</Text>
         </Box>
 
         <Box>
