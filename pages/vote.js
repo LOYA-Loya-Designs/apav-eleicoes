@@ -24,7 +24,7 @@ export default function Vote() {
         direction="column" // Alterando a direção para column
         bgColor="DEDEDE"
       >
-        <HStack spacing={6} align="center" justify="center" wrap="wrap">
+        <HStack spacing={"50px"} align="center" justify="center" wrap="wrap">
           <VotingOption label="Lista A" onCheckBoxChange={handleCheckBoxChange} />
           <VotingOption label="Lista B" onCheckBoxChange={handleCheckBoxChange} />
         </HStack>
