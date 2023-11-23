@@ -1,7 +1,7 @@
 import { Box, Button, Flex, FormControl, FormHelperText, FormLabel, Heading, Input } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { logIn, logOut } from "../db/auth"
+import { useEffect, useState } from 'react';
+import { auth, logIn, logOut } from "../db/auth"
 
 export default function Home() {
   const router = useRouter();
@@ -11,6 +11,16 @@ export default function Home() {
   const handleLogin = async () => {
     logIn(email, password)
   };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        router.push("/home");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleLogout = async () => {
     logOut()

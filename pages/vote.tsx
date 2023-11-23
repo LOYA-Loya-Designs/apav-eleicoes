@@ -7,7 +7,7 @@ import ConfirmationBox from "../components/ConfirmationBox";
 export default function Vote() {
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleCheckBoxChange = (value) => {
+  const handleCheckBoxChange = (value: boolean | ((prevState: boolean) => boolean)) => {
     setIsChecked(value);
   };
 

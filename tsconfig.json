@@ -27,8 +27,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/index.js",
-    "pages/home.js",
+    "pages/index.tsx",
+    "pages/home.tsx",
     "components/ProtectedRoute.js",
     "components/Header.js",
     "components/IconButton.js"
