@@ -6,14 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "insertUsers": "node utils/insertUsers.js"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "firebase": "^10.6.0",
+    "firebase-admin": "^11.11.0",
     "framer-motion": "^10.16.4",
+    "md5": "^2.3.0",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",

@@ -12,9 +12,9 @@ export default function Header({ user, iconSvg }) {
         <Heading as="h3" size="lg" color="white"></Heading>
       </Box>
       <Box display="flex" alignItems="center" color="white">
-        <Box ml={2}>
+        <Flex ml={2} direction="row" align="center" gap="20px">
           <FaUser size={30} /> {/* Ícone de perfil à direita */}
-        </Box>
+        </Flex>
       </Box>
     </Flex>
   );

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
 import { Flex, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Heading } from '@chakra-ui/react';
 import { FaHome, FaSearch, FaUser } from 'react-icons/fa';
 import Header from '../components/Header';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Router from 'next/router';
-import IconButton from '../components/IconButton';
+import { auth } from '@/db/auth';
+import React, { useState, useEffect } from 'react';
+import IconButton from '@/components/IconButton';
 
 export default function Home() {
+  const router = Router
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isHelpDrawerOpen, setIsHelpDrawerOpen] = useState(false);
 
@@ -18,7 +21,17 @@ export default function Home() {
     setIsHelpDrawerOpen(!isHelpDrawerOpen);
   };
 
-  const router = Router;
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <>
@@ -31,35 +44,37 @@ export default function Home() {
             <IconButton icon={<FaUser />} onClick={handleHelpClick} label="AVISOS E INFORMAÇÕES LEGAIS" />
           </Flex>
         </Flex>
+
+        {/* Chakra UI Drawers */}
+        <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} placement="right">
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader fontSize="35px" fontWeight="md">Ajuda</DrawerHeader>
+            <DrawerBody>
+              {/* Add your search content here */}
+              <Heading fontSize="20px" fontWeight="md">- Como votar?</Heading>
+              <Heading fontSize="20px" fontWeight="md"> ...</Heading>
+              <Heading fontSize="20px" fontWeight="md">- Contactos?</Heading>
+              <Heading fontSize="20px" fontWeight="md">...</Heading>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+
+        <Drawer isOpen={isHelpDrawerOpen} onClose={() => setIsHelpDrawerOpen(false)} placement="right">
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader fontSize="35px" fontWeight="md">Avisos e Informações Legais</DrawerHeader>
+            <DrawerBody>
+              {/* Add content for the second drawer here */}
+              <Heading fontSize="20px" fontWeight="md">...</Heading>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
       </ProtectedRoute>
 
-      {/* Chakra UI Drawers */}
-      <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} placement="right">
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader fontSize="35px" fontWeight="md">Ajuda</DrawerHeader>
-          <DrawerBody>
-            {/* Add your search content here */}
-            <Heading fontSize="20px" fontWeight="md">- Como votar?</Heading>
-            <Heading fontSize="20px" fontWeight="md"> ...</Heading>
-            <Heading fontSize="20px" fontWeight="md">- Contactos?</Heading>
-            <Heading fontSize="20px" fontWeight="md">...</Heading>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
 
-      <Drawer isOpen={isHelpDrawerOpen} onClose={() => setIsHelpDrawerOpen(false)} placement="right">
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader fontSize="35px" fontWeight="md">Avisos e Informações Legais</DrawerHeader>
-          <DrawerBody>
-            {/* Add content for the second drawer here */}
-            <Heading fontSize="20px" fontWeight="md">...</Heading>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
     </>
   );
 }

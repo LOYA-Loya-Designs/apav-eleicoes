@@ -22,7 +22,7 @@ const VotingOption = ({ label, onCheckBoxChange }) => {
           <Heading as="h3" fontWeight="medium" fontSize="50px" color="black">
             {label}
           </Heading>
-          <Text color="red" fontSize="md">Saber mais</Text>
+          <Text fontWeight="medium" color="red" fontSize="md">Saber mais</Text>
         </Box>
 
         <Box>
