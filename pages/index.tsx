@@ -5,8 +5,8 @@ import { logIn, logOut } from "../db/auth"
 
 export default function Home() {
   const router = useRouter();
-  const [email, setEmail] = useState("admin@admin.pt");
-  const [password, setPassword] = useState("admin123");
+  const [email, setEmail] = useState("1@mail.pt");
+  const [password, setPassword] = useState("242f12");
 
   const handleLogin = async () => {
     logIn(email, password)
@@ -105,6 +105,7 @@ export default function Home() {
                 colorScheme='gray'
                 onClick={() => handleLogout()}
                 color="red"
+                borderRadius="15px"
               >
                 Entrar
               </Button>
