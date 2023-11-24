@@ -1,15 +1,18 @@
-import { Box, Button, Flex, FormControl, FormHelperText, FormLabel, Heading, Input } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, FormHelperText, FormLabel, Heading, Input, Spinner, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { auth, logIn, logOut } from "../db/auth"
 
 export default function Home() {
   const router = useRouter();
-  const [email, setEmail] = useState("1@mail.pt");
-  const [password, setPassword] = useState("242f12");
+  const [email, setEmail] = useState("admin@mail.pt");
+  const [password, setPassword] = useState("admin123");
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleLogin = async () => {
-    logIn(email, password)
+    setIsLoading(true)
+    await logIn(email, password)
+    setIsLoading(false)
   };
 
   useEffect(() => {
@@ -22,9 +25,7 @@ export default function Home() {
     return () => unsubscribe();
   }, []);
 
-  const handleLogout = async () => {
-    logOut()
-  };
+
 
   return (
     <Flex
@@ -99,25 +100,15 @@ export default function Home() {
             </FormControl>
             <Flex w="100%" justify="end">
               <Button
+                borderRadius="10px"
                 w="130px"
                 mt={4}
                 colorScheme='gray'
                 onClick={() => handleLogin()}
                 color="red"
               >
-                Entrar
-              </Button>
-            </Flex>
-            <Flex w="100%" justify="end">
-              <Button
-                w="130px"
-                mt={4}
-                colorScheme='gray'
-                onClick={() => handleLogout()}
-                color="red"
-                borderRadius="15px"
-              >
-                Entrar
+                <Text display={isLoading ? "none" : "Flex"}>Entrar</Text>
+                <Spinner display={isLoading ? "flex" : "none"} />
               </Button>
             </Flex>
 

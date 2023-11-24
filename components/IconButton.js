@@ -18,11 +18,12 @@ export default function IconButton({ icon, label, onClick }) {
         alignItems="center"
         justifyContent="center"
         gap="25px"
-        _hover={
-          {
-            background: "click"
-          }
-        }
+        _hover={{
+          background: "hoverRed"
+        }}
+        _active={{
+          bg: `clickRed`,
+        }}
 
       >
 

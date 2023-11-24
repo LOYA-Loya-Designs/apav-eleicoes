@@ -3,18 +3,20 @@ import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 export const auth = getAuth();
 
-export const logIn = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
+export const logIn = async (email, password) => {
+    await signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(user)
+            return user
         })
         .catch((error) => {
             console.log(error.code);
             console.log(error.message);
+            return error
         });
 }
 
-export const logOut = () => {
-    signOut(auth)
+export const logOut = async () => {
+    await signOut(auth)
 }

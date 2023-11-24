@@ -6,12 +6,16 @@ import Router from 'next/router';
 import { auth } from '@/db/auth';
 import React, { useState, useEffect } from 'react';
 import IconButton from '@/components/IconButton';
+import { useUser } from '@/components/UserContext';
 
 export default function Home() {
   const router = Router
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isHelpDrawerOpen, setIsHelpDrawerOpen] = useState(false);
+  const [isHelpDrawerOpen, setIsHelpDrawerOpen] = useState(false)
+
+  const { userDoc } = useUser();
+  console.log(userDoc)
 
   const handleSearchClick = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -23,21 +27,11 @@ export default function Home() {
 
   const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        console.log(user);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   return (
     <>
       <ProtectedRoute>
-        <Header user={undefined} iconSvg={undefined}></Header>
-        <Flex w="100vw" h="100vh" align="center" justify="center" bgColor="DEDEDE">
+
+        <Flex w={["100vw", "100vw", "100vw", "100vw"]} h="100vh" align="center" justify="center" bgColor="DEDEDE">
           <Flex mt={4} align="center" justify="center" gap="45px">
             <IconButton icon={<FaHome />} onClick={() => router.push("/vote")} label="VOTAR" />
             <IconButton icon={<FaSearch />} onClick={handleSearchClick} label="AJUDA" />
@@ -46,7 +40,7 @@ export default function Home() {
         </Flex>
 
         {/* Chakra UI Drawers */}
-        <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} placement="right">
+        <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} placement="right" size={"xl"}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
@@ -61,7 +55,7 @@ export default function Home() {
           </DrawerContent>
         </Drawer>
 
-        <Drawer isOpen={isHelpDrawerOpen} onClose={() => setIsHelpDrawerOpen(false)} placement="right">
+        <Drawer isOpen={isHelpDrawerOpen} onClose={() => setIsHelpDrawerOpen(false)} placement="right" size={"lg"}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />

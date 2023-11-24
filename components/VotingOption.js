@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Checkbox, Text, Flex, Heading } from "@chakra-ui/react";
 import { FaTimes } from "react-icons/fa";
 
-const VotingOption = ({ label, onCheckBoxChange }) => {
+const VotingOption = ({ label, onCheckBoxChange, id }) => {
   return (
     <Box>
       <Flex
@@ -13,7 +13,7 @@ const VotingOption = ({ label, onCheckBoxChange }) => {
         mb={4}
         color="white"
         variant="solid"
-        bgColor="#d9d9d9"
+        bgColor="#bfbfbf"
         boxShadow="6px 6px 6px rgba(0, 0, 0, 0.2)"
         height="120px"
         justifyContent="space-between"
@@ -27,7 +27,7 @@ const VotingOption = ({ label, onCheckBoxChange }) => {
 
         <Box>
           <Checkbox
-            onChange={(e) => onCheckBoxChange(e.target.checked)}
+            onChange={(e) => onCheckBoxChange(id, e.target.checked)}
             iconColor="red"
             defaultIsChecked={false}
             colorScheme="white"

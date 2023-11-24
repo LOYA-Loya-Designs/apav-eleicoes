@@ -10,8 +10,9 @@ const breakpoints = {
 const theme = extendTheme({
     colors: {
         red: '#EC1D23',
-        bgColor: "DEDEDE",
-        click: "#a60202",
+        bgColor: "#DEDEDE",
+        clickRed: "#6e1619",
+        hoverRed: "#96171b",
     },
 })
 
