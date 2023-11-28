@@ -13,7 +13,7 @@ export const logIn = async (email, password) => {
         .catch((error) => {
             console.log(error.code);
             console.log(error.message);
-            return error
+            throw error
         });
 }
 

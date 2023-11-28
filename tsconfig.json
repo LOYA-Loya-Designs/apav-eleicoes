@@ -31,7 +31,7 @@
     "pages/home.tsx",
     "components/ProtectedRoute.js",
     "components/Header.js",
-    "components/IconButton.js"
+    "components/IconButton.tsx"
   ],
   "exclude": [
     "node_modules"

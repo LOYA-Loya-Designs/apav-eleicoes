@@ -31,11 +31,11 @@ export default function Home() {
     <>
       <ProtectedRoute>
 
-        <Flex w={["100vw", "100vw", "100vw", "100vw"]} h="100vh" align="center" justify="center" bgColor="DEDEDE">
-          <Flex mt={4} align="center" justify="center" gap="45px">
-            <IconButton icon={<FaHome />} onClick={() => router.push("/vote")} label="VOTAR" />
-            <IconButton icon={<FaSearch />} onClick={handleSearchClick} label="AJUDA" />
-            <IconButton icon={<FaUser />} onClick={handleHelpClick} label="AVISOS E INFORMAÇÕES LEGAIS" />
+        <Flex w={["100vw", "100vw", "100vw", "100vw"]} h="100vh" align="center" justify="center" bgColor="bgColor">
+          <Flex mt={4} align="center" justify="center" gap="45px" direction={["column", "column", "row", "row"]}>
+            <IconButton image={"/images/vote.png"} onClick={() => router.push("/vote")} label="VOTAR" />
+            <IconButton image={"/images/help.png"} onClick={handleSearchClick} label="AJUDA" />
+            <IconButton image={"/images/terms.png"} onClick={handleHelpClick} label="TERMOS E CONDIÇÕES" />
           </Flex>
         </Flex>
 

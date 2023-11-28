@@ -18,10 +18,10 @@ export default function Header({ user, iconSvg }) {
   };
 
   return (
-    <Flex display={router.pathname == "/" ? "none" : "flex"} align="center" justify="space-between" p={4} bgColor="red" position="absolute" left="0" width="100vw" height="60px" paddingX="40px">
+    <Flex display={router.pathname == "/" ? "none" : "flex"} align="center" justify="space-between" p={4} bgColor="red" position="absolute" left="0" width="100vw" height={["50px", "50px", "60px", "60px"]} paddingX={["10px", "10px", "40px", "40px"]}>
       <Box display="flex" alignItems="center" color="white">
         <Flex
-          w="130px"
+          w={["80px", "80px", "130px", "130px"]}
           h="100px"
           bgImage="/images/logoHeader.png"
           bgPos="center"
@@ -30,23 +30,23 @@ export default function Header({ user, iconSvg }) {
         />
         <Heading as="h3" size="lg" color="white"></Heading>
       </Box>
-      <Flex direction="row" justify="center" gap="35px" align="center">
+      <Flex direction="row" justify="center" gap={["10px", "10px", "35px", "35px"]} align="center">
         <Box display="flex" alignItems="center" color="white">
           <Flex direction="row" align="center" gap="7px">
-            <Text fontSize="20px" fontWeight="medium">{userDoc?.name}</Text>
-            <FaUser size={30} /> {/* Ícone de perfil à direita */}
+            <Text fontSize={["10px", "10px", "20px", "20px"]} textAlign="center" fontWeight="medium">{userDoc?.name}</Text>
+            <FaUser size={20} /> {/* Ícone de perfil à direita */}
           </Flex>
         </Box>
         <Button
           borderRadius="10px"
-          w="70px"
-          h="35px"
+          w={["50px", "50px", "70px", "70px"]}
+          h={["30px", "30px", "35px", "35px"]}
           colorScheme='gray'
           onClick={() => handleLogout()}
           color="red"
           display={router.pathname == "/vote" ? "none" : "Flex"}
         >
-          <Text display={isLoading ? "none" : "Flex"}>Sair</Text>
+          <Text fontSize={["12px", "12px", "17px", "17px"]} display={isLoading ? "none" : "Flex"}>Sair</Text>
           <Spinner display={isLoading ? "flex" : "none"} />
         </Button>
       </Flex>
